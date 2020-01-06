@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:include="/layouts/layout::plantilla">
+
+<head>
+<title th:fragment="titulo"></title>
+</head>
+
+<body>
+	<div class="container" th:fragment="content">
+		<div class="container" style="position: absolute;">
+			<h1 class="text-center mt-2 mb-2" style="position: absolute;">LISTADO DE COMPRAS</h1>  
+				<br>
+			<h2 th:if="${items.size()==0}"
+				style="margin-top: 35px; text-align: center;">No hay datos para
+				mostrar</h2>
+  
+			<div style="text-align: right">
+				<a name="nuevoMovimiento" id="nuevoMovimiento"
+					class="btn btn-primary mt-4"
+					th:href="@{/compra/guardarCompra}" role="button"><i
+					class="fas fa-plus"></i>Agregar Compra</a>
+			</div>
+			<hr>
+			<div class="my-custom-scrollbar-bigTable table-wrapper-scroll-y">
+				<table class="table border border-dark" id="datos"
+					th:if="${items.size()>0}"
+					style="color: white; text-align: center; width: 98%; margin-left: 1%">
+					<thead class="bg-gradient-primary">
+						<tr>
+							<th>Numero Factura</th>
+							<th>Tipo Compra</th>
+							<th>Total Compra</th>
+							<th>Fecha Compra</th>
+							<th>Proveedor</th>
+						</tr>
+					</thead>
+					<tbody style="color: black;">
+						<tr th:each="i:${items}">
+							<td th:text="${i.numeroFactura}"></td>
+							<td th:text="${i.tipoCompra}"></td>
+							<td th:text="${i.totalCompra}"></td>
+							<td th:text="${i.fechaCompra}"></td>
+							<td th:text="${i.Proveedores.nombreProveedor}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+</html>
