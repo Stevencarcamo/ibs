@@ -34,6 +34,17 @@ public class Comprasproducto implements Serializable {
 	public Comprasproducto() {
 	}
 
+	public Comprasproducto(Long idComprasProductos, BigInteger cantidad, String estado,
+			               float precioCompra,Compra compra, Producto producto) {
+		super();
+		this.idComprasProductos = idComprasProductos;
+		this.cantidad = cantidad;
+		this.estado = estado;
+		this.precioCompra = precioCompra;
+		this.compra = compra;
+		this.producto = producto;
+	}
+
 	public Long getIdComprasProductos() {
 		return this.idComprasProductos;
 	}

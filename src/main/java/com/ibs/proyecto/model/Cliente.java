@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  * The persistent class for the clientes database table.
  * 
  */
-@Entity
+@Entity 
 @Table(name = "clientes")
 @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
 public class Cliente implements Serializable {

@@ -2,9 +2,7 @@ package com.ibs.proyecto.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.sql.Timestamp;
 import java.math.BigInteger;
 import java.util.Date;
@@ -42,6 +40,19 @@ public class Compra implements Serializable {
 	private List<Comprasproducto> comprasproductos;
 
 	public Compra() {
+	}
+    //creacion de constructor para compra
+	public Compra(Long id,Date fechaCompra,Timestamp fechaIngreso,BigInteger numeroFactura,String tipoCompra,
+                  String totalCompra,Proveedore proveedor,List<Comprasproducto>comprasproducto){
+		   super();
+		   this.id = id;
+		   this.fechaCompra = fechaCompra;
+		   this.fechaIngreso= fechaIngreso;
+		   this.numeroFactura=numeroFactura;
+		   this.tipoCompra=tipoCompra;
+		   this.totalCompra=totalCompra;
+		   this.proveedor=proveedor;
+		   this.comprasproductos=comprasproductos;
 	}
 
 	public Long getId() {

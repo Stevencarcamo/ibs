@@ -1,71 +1,58 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:include="/layouts/layout::plantilla">
+<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
-    </script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
-    </script>
-    <title>Document</title>
-</head>
-<!-- <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:include="/layouts/layout::plantilla">
--->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <title>Agregar compra</title>
+  </head>
 
-<head>
-    <title th:fragment="titulo"></title>
-</head> 
-
-<body>
+  <body >
     <div class="container" th:fragment="content">
         <div class="container">
-            <h1 class="text-center mt-2">Nueva Venta</h1>
-            <div class="form-group row" style="margin-left: 20%;">
-                <label for="inputName" class="col-form-label">
-                    Tipo:</label>
+
+          <h1 class="text-center mt-2">Nueva Compra</h1>
+            <div class="container">
+
+               <div style="margin-left: 210px" class="container">
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" name="tipoVenta" id="tipoVenta" placeholder="Tipo Venta">
+                    <label for="inputName" class="col-form-label">Fecha:</label>
+                    <input type="date" class="form-control" name="fechaCompra" id="fechaCompra">
                 </div>
 
-                <div class="form-group row">
-                    <label for="inputName" class="col-sm-2 col-form-label"></label>
-                    <div class="col-sm-6">
-                        <!-- th:if="@{${cliente}==null}" -->
-                        <input type="text" class="form-control" name="cliente" id="cliente" placeholder="Cliente"
-                            readonly="readonly">
+                <div class="col-sm-3">
+                    <label for="inputName" class="col-form-label">Tipo de Compra:</label>
+                    <input type="text" class="form-control" name="tipoCompra" id="tipoCompra">
+                </div>
 
-                    </div>
-                    <button id="boton" type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#ModalClientes">
-                        <i class="fas fa-search-plus"></i> Buscar
+                </div>
+                <div style="margin-left: 570px;margin-top: -153px;" class="container">
+                <div class="col-sm-3">
+                    <label for="inputName" class="col-form-label">N° Factura:</label>
+                    <input type="text" class="form-control" name="tipoCompra" id="tipoCompra">
+                </div>
+
+                <label for="inputName" class="col-sm-2 col-form-label">Proveedor:</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" name="proveedor" id="proveedor" placeholder="Proveedor"readonly="readonly">
+                
+                    <button style="margin-top: 10px;"  id="boton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalProveedores">
+                    <i class="fas fa-search-plus"></i> Buscar
                     </button>
                 </div>
+                </div>  
             </div>
-            <div class="form-group row" style="margin-left: 20%;">
-                <div>
-                    <label for="inputName" class="col-form-label">
-                        N°:</label>
-                    <div class="col-sm-10">
-                        <input type="number" min="00001" class="form-control" name="numeroFactura" id="numeroFactura"
-                            placeholder="N° Factura">
-                    </div>
-                </div>
-            </div>
+
             <hr>
-            <h3 class="text-center">Detalles de la venta</h3>
+            <h3 class="text-center">Detalles de la compra</h3>
             <div class="form-group row">
                 <div class="col-sm-2">
                     <input type="number" class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad"
                         min="1">
                 </div>
                 <div class="col-sm-2">
-                    <input type="number" class="form-control" name="descuento" id="descuento" placeholder="Descuento %"
+                    <input type="number" class="form-control" name="descuento" id="descuento" placeholder="Precio $"
                         min="0.00" max="100">
                 </div>
                 <div class="col-sm-5">
@@ -86,8 +73,7 @@
                         <th>Cant.</th>
                         <th>Producto</th>
                         <th>Precio</th>
-                        <th>Descuento</th>
-                        <th>SubTotal</th>
+                        <th>Total</th>
                         <th>Operaciones</th>
                     </tr>
 
@@ -97,27 +83,14 @@
                 </tbody>
 
             </table>
-            <div style="margin-left: 133px;">
-                <label style="margin-left: 720px;" for="inputName" class="col-sm-2 col-form-label">
-                    <h5>Sub_total :</h5>
-                </label>
-                <div style="margin-left: 830px; margin-top:-45px;" class="col-sm-2">
-                    <input type="text" class="form-control" name="totalVenta" id="Subtotal" readonly="readonly">
-                </div>
+            <div>
 
-                <label style="margin-left: 740px; margin-top: 14px;" for="inputName" class="col-sm-2 col-form-label">
-                    <h5>IVA:</h5>
-                </label>
-                <div style="margin-left: 830px; margin-top:-45px;" class="col-sm-2">
-                    <input type="text" class="form-control" name="totalVenta" id="iva" readonly="readonly">
-                </div>
-
-                <label style="margin-left: 710px;  margin-top: 14px;" for="inputName" class="col-sm-2 col-form-label">
+                <label for="inputName" class="col-sm-2 col-form-label">
                     <h5>Total venta:</h5>
 
                 </label>
-                <div style="margin-left: 730px;margin-top:-45px;" class="col-sm-2">
-                    <input style="margin-left: 76%;" type="text" class="form-control" name="totalVenta" id="totalVenta"
+                <div  class="col-sm-2">
+                <input  type="text" class="form-control" name="totalVenta" id="totalVenta"
                         readonly="readonly">
                 </div>
 
@@ -131,51 +104,31 @@
             </div>
 
             <!--  Modal Para seleccionar producto-->
-            <!-- The Modal -->
-            <div class="modal fade" id="ModalClientes">
+            <div class="modal fade" id="ModalProveedores">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content" style="margin-left: 150px;">
 
                         <!-- Modal Header -->
                         <div class="container">
                             <div class="modal-header">
-                                <h4 class="modal-title">Listado de clientes</h4>
+                                <h4 class="modal-title">Listado de proveedores</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                                <table class="table border border-dark" id="tablaClientes"
-                                    style="color: white; text-align: center;">
-                                    <thead class="bg-gradient-primary" style="color: black;">
+                                <table class="table" id="tablaProveedores">
+                                    <thead>
                                         <tr>
-                                            <th>Id</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
-                                            <th>Direccion</th>
-                                            <th>NCR</th>
-                                            <th>Tipo</th>
-                                            <th>Giro</th>
-                                            <th>Telefono</th>
+                                            <th>DUI</th>
+                                            <th>Teléfono</th>
+                                            <th>Correo</th>
                                             <th>Agregar</th>
                                         </tr>
                                     </thead>
-                                    <tbody style="color: black;">
-                                        <!-- <tr th:each="i:${Clientes}">
-                                        <td th:text="${i.idCliente}"></td>
-                                        <td th:text="${i.nombreCliente}"></td>
-                                        <td th:text="${i.apellidoCliente}"></td>
-                                        <td th:text="${i.direccionCliente}"></td>
-                                        <td th:text="${i.nrc}"></td>
-                                        <td th:text="${i.tipoCliente}"></td>
-                                        <td th:text="${i.giro}"></td>
-                                        <td th:text="${i.telefonoCliente}"></td>
-                                        <td>
-                                            <button id="agregarCliente" class="btn btn-primary">
-                                                <i class="fas fa-plus"></i> Agregar
-                                            </button>
-                                        </td>
-                                    </tr> -->
+                                    <tbody >
                                     </tbody>
                                 </table>
                             </div>
@@ -205,7 +158,7 @@
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                                <table class="table border border-dark" id="tProductos"
+                                <table class="table border border-dark" id="tablaProductos"
                                     style="color: black; text-align: center;">
                                     <thead class="bg-gradient-primary" style="color: black;">
                                         <tr>
@@ -248,12 +201,13 @@
         </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script th:src="@{/static/jsventa/venta.js}"> </script>
-</body>
+  </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+  <script src="/src/main/resources/static/js/compra.js"></script>
 
 </html>

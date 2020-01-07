@@ -1,20 +1,26 @@
 package com.ibs.proyecto.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ibs.proyecto.model.Comprasproducto;
 import com.ibs.proyecto.model.Producto;
 import com.ibs.proyecto.model.Proveedore;
 import com.ibs.proyecto.repository.ICompraRepository;
 import com.ibs.proyecto.repository.IProductoRepository;
 import com.ibs.proyecto.repository.IProveedorRepository;
+import com.ibs.proyecto.service.CompraService;
+import org.springframework.web.bind.annotation.RequestParam;
 
-@Controller
+
+/*@Controller
 @RequestMapping("/compra")
 public class CompraController {
 
@@ -44,4 +50,33 @@ public class CompraController {
 		
 		return new String("vistas/Compra/AgregarCompra");
 	}
+}*/
+
+@Controller
+@RequestMapping("controlador")
+@CrossOrigin
+public class CompraController {
+
+	@Autowired
+	CompraService sCompra;
+
+	@Autowired
+	IProductoRepository ipr;
+
+	@Autowired
+	IProveedorRepository ip;
+
+	/*public static List<Comprasproducto> detalles = new ArrayList()<Comprasproducto>();
+
+	@GetMapping(value="compras")
+	public String listarcompra() {
+		return new String("vistas/Compra/ListarCompra");
+	}
+	
+	/*@GetMapping(value="guardar")
+	public String guardarMostrar(final Model model,@RequestParam(requiered = false)final Proveedore proveedor) {
+		return new String
+	}*/
+	
+	
 }
